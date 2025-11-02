@@ -4,13 +4,12 @@
 
 ## Introduction
 
-In this project, I build a mini honeynet in Azure and ingest log sources from various resources into a Log Analytics workspace, which is then used by Microsoft Sentinel to build attack maps, trigger alerts, and create incidents. I measured some security metrics in the insecure environment for 24 hours, apply some security controls to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics we will show are:
+In this project, I build a mini honeynet in Azure and ingest log sources from various resources into a Log Analytics workspace, which is then used by Microsoft Sentinel to build attack maps, trigger alerts, and create incidents. I measured some security metrics in the insecure environment for 24 hours, apply some security controls to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics I will show are:
 
-- SecurityEvent (Windows Event Logs)
+- SecurityEvent (Windows Security Event logs)
 - Syslog (Linux Event Logs)
-- SecurityAlert (Log Analytics Alerts Triggered)
 - SecurityIncident (Incidents created by Sentinel)
-- AzureNetworkAnalytics_CL (Malicious Flows allowed into our honeynet)
+- NTANetAnalytics (Malicious Flows allowed into the honeynet)
 
 ## Architecture Before Hardening / Security Controls
 <img width="1140" height="630" alt="image" src="https://github.com/user-attachments/assets/2edebbc1-3da5-460c-a478-32ba9bed8d40" />
@@ -40,16 +39,15 @@ For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL t
 ## Metrics Before Hardening / Security Controls
 
 The following table shows the metrics we measured in our insecure environment for 24 hours:
-Start Time 2023-03-15 17:04:29
-Stop Time 2023-03-16 17:04:29
+Start Time 2025-10-09 13:20:20
+Stop Time 2025-10-10 13:20:20
 
 | Metric                   | Count
 | ------------------------ | -----
-| SecurityEvent            | 19470
-| Syslog                   | 3028
-| SecurityAlert            | 10
-| SecurityIncident         | 348
-| AzureNetworkAnalytics_CL | 843
+| SecurityEvent            | 726
+| Syslog                   | 18434
+| SecurityIncident         | 251
+| NTANetAnalytics          | 1481
 
 ## Attack Maps Before Hardening / Security Controls
 
@@ -58,16 +56,15 @@ Stop Time 2023-03-16 17:04:29
 ## Metrics After Hardening / Security Controls
 
 The following table shows the metrics we measured in our environment for another 24 hours, but after we have applied security controls:
-Start Time 2023-03-18 15:37
-Stop Time	2023-03-19 15:37
+Start Time 2025-10-23 19:30:10
+Stop Time	2025-10-24 15:30:10
 
-| Metric                   | Count
-| ------------------------ | -----
-| SecurityEvent            | 8778
-| Syslog                   | 25
-| SecurityAlert            | 0
-| SecurityIncident         | 0
-| AzureNetworkAnalytics_CL | 0
+| Metric                   | Count | Total Reduction 
+| ------------------------ | ----- | ---------------
+| SecurityEvent            | 171   | -76.45%
+| Syslog                   | 12    | -99.93%
+| SecurityIncident         | 0     | -100.00%
+| NTANetAnalytics          | 0     | -100.00%
 
 ## Conclusion
 
