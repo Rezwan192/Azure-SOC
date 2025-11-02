@@ -49,12 +49,12 @@ Stop Time 2025-10-10 13:20:20
 
 | Metric                    | Count
 | ------------------------- | -----
+| SecurityIncident          | 251
 | SecurityEvent             | 726
 | ↳ Windows RDP Failed Auth | 422 
 | SQL Server Failed Auth    | 400
 | Syslog                    | 18434
 | ↳ Linux SSH Failed Auth   | 4945
-| SecurityIncident          | 251
 | NTANetAnalytics           | 1481
 
 ## Attack Maps After Hardening / Security Controls
@@ -69,12 +69,12 @@ Stop Time	2025-10-24 19:30:10
 
 | Metric                   | Count | Total Reduction 
 | ------------------------ | ----- | ---------------
+| SecurityIncident         | 0     | -100%
 | SecurityEvent            | 171   | -76.4%
  ↳ Windows RDP Failed Auth | 0     | -100%
 | SQL Server Failed Auth   | 0     | -100%
 | Syslog                   | 12    | -99.9%
 | ↳ Linux SSH Failed Auth  | 0     | -100%
-| SecurityIncident         | 0     | -100%
 | NTANetAnalytics          | 0     | -100%
 
 ## Conclusion
