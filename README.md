@@ -63,8 +63,8 @@ Stop Time 2025-10-10 13:20:20
 
 ## Metrics After Hardening / Security Controls
 
-The following table shows the metrics I measured in my environment for another 24 hours, but after I applied security controls:
-Start Time 2025-10-23 19:30:10
+The following table shows the metrics I measured in my environment for another 24 hours, but after I applied security controls:  
+Start Time 2025-10-23 19:30:10  
 Stop Time	2025-10-24 19:30:10
 
 | Metric                   | Count | Total Reduction 
