@@ -4,9 +4,9 @@
 
 ## Introduction
 
-In this project, I build a mini honeynet in Azure and ingest log sources from various resources into a Log Analytics workspace, which is then used by Microsoft Sentinel to build attack maps, trigger alerts, and create incidents. I measured some security metrics in the insecure environment for 24 hours, apply some security controls to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics I will show are:
+In this project, I build a mini honeynet in Azure and ingest log sources from various resources into a Log Analytics workspace, which is then used by Microsoft Sentinel to build attack maps, trigger alerts, and create incidents. I measure some security metrics in the insecure environment for 24 hours, apply some security controls to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics I will show are:
 
-- SecurityEvent (Windows Security Event logs)
+- SecurityEvent (Suspicious Windows Security Event logs)
 - Syslog (Linux Event Logs)
 - SecurityIncident (Incidents created by Sentinel)
 - NTANetAnalytics (Malicious Flows allowed into the honeynet)
@@ -21,7 +21,7 @@ The architecture of the mini honeynet in Azure consists of the following compone
 
 - Virtual Network (VNet)
 - Network Security Group (NSG)
-- Virtual Machines (2 windows, 1 linux)
+- Virtual Machines (1 windows, 1 linux)
 - Log Analytics Workspace
 - Azure Key Vault
 - Azure Storage Account
@@ -29,12 +29,13 @@ The architecture of the mini honeynet in Azure consists of the following compone
 
 For the "BEFORE" metrics, all resources were originally deployed, exposed to the internet. The Virtual Machines had both their Network Security Groups and built-in firewalls wide open, and all other resources are deployed with public endpoints visible to the Internet; aka, no use for Private Endpoints.
 
-For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as Private Endpoint
+For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as Private Endpoint.
 
 ## Attack Maps Before Hardening / Security Controls
-![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/1qvswSX.png)<br>
-![Linux Syslog Auth Failures](https://i.imgur.com/G1YgZt6.png)<br>
-![Windows RDP/SMB Auth Failures](https://i.imgur.com/ESr9Dlv.png)<br>
+<img width="898" height="464" alt="(before)-windows-rdp-auth-fail" src="https://github.com/user-attachments/assets/2261c023-6c7b-432b-ae3e-c794a08a7b2f" />
+<img width="1092" height="475" alt="(before)-linux-ssh-auth-fail" src="https://github.com/user-attachments/assets/5b4e924a-8f81-4ddb-9a1a-c6e9cbe54751" />
+<img width="1093" height="480" alt="(before)-nsg-malicious-allowed-in" src="https://github.com/user-attachments/assets/2988638b-0f5b-4312-9be5-ca103e5fc278" />
+
 
 ## Metrics Before Hardening / Security Controls
 
@@ -49,7 +50,7 @@ Stop Time 2025-10-10 13:20:20
 | SecurityIncident         | 251
 | NTANetAnalytics          | 1481
 
-## Attack Maps Before Hardening / Security Controls
+## Attack Maps After Hardening / Security Controls
 
 ```All map queries actually returned no results due to no instances of malicious activity for the 24 hour period after hardening.```
 
@@ -61,13 +62,13 @@ Stop Time	2025-10-24 15:30:10
 
 | Metric                   | Count | Total Reduction 
 | ------------------------ | ----- | ---------------
-| SecurityEvent            | 171   | -76.45%
-| Syslog                   | 12    | -99.93%
-| SecurityIncident         | 0     | -100.00%
-| NTANetAnalytics          | 0     | -100.00%
+| SecurityEvent            | 171   | -76.4%
+| Syslog                   | 12    | -99.9%
+| SecurityIncident         | 0     | -100%
+| NTANetAnalytics          | 0     | -100%
 
 ## Conclusion
 
-In this project, a mini honeynet was constructed in Microsoft Azure and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was employed to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the insecure environment before security controls were applied, and then again after implementing security measures. It is noteworthy that the number of security events and incidents were drastically reduced after the security controls were applied, demonstrating their effectiveness.
+In this project, a mini honeynet was constructed in Microsoft Azure and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was employed to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the insecure environment before security controls were applied, and then again after implementing security measures. The number of security events and incidents were drastically reduced after the security controls were applied, demonstrating their effectiveness.
 
 It is worth noting that if the resources within the network were heavily utilized by regular users, it is likely that more security events and alerts may have been generated within the 24-hour period following the implementation of the security controls.
