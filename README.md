@@ -32,7 +32,7 @@ The architecture of the mini honeynet in Azure consists of the following compone
 
 For the "BEFORE" metrics, all resources were originally deployed and exposed to the internet. The Virtual Machines had both their Network Security Groups and built-in firewalls wide open, and all other resources were deployed with public endpoints visible to the Internet; aka, no use for Private Endpoints.
 
-For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as Private Endpoint.
+For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation. An additional NSG was also added to the main subnet for layered security. All other resources were protected by their built-in firewalls as well as Private Endpoint.
 
 ## Attack Maps Before Hardening / Security Controls
 <img width="898" height="464" alt="(before)-windows-rdp-auth-fail" src="https://github.com/user-attachments/assets/2261c023-6c7b-432b-ae3e-c794a08a7b2f" />
@@ -40,6 +40,7 @@ For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL t
 <img width="1092" height="475" alt="(before)-linux-ssh-auth-fail" src="https://github.com/user-attachments/assets/5b4e924a-8f81-4ddb-9a1a-c6e9cbe54751" />
 <img width="1093" height="480" alt="(before)-nsg-malicious-allowed-in" src="https://github.com/user-attachments/assets/2988638b-0f5b-4312-9be5-ca103e5fc278" />
 
+To view the queries used to generate the above maps, see the "Sentinel Map Queries" file. 
 
 ## Metrics Before Hardening / Security Controls
 
@@ -57,6 +58,12 @@ Stop Time: 2025-10-10 13:20:20
 | Syslog                    | 18434
 | ↳ Linux SSH Failed Auth   | 4945
 | NTANetAnalytics           | 1481
+
+## Incident Response Before Hardening / Security Controls
+
+<img width="1144" height="357" alt="image" src="https://github.com/user-attachments/assets/f3e4cdb5-baba-4875-9634-589ee67cc1e0" />
+
+I recorded all actions taken for the above generated incidents in "Incident Response Notes". To enhance my technical proficiency, I also investigated incidents that occurred prior to the 10/9 metric start date. To better replicate real-world incident response, I simulated certain actions, such as contacting a mock manager to verify employee activity, and also assumed the role of an additional threat actor.
 
 ## Attack Maps After Hardening / Security Controls
 
@@ -78,6 +85,8 @@ Stop Time:	2025-10-24 19:30:10
 | Syslog                   | 12    | -99.9%
 | ↳ Linux SSH Failed Auth  | 0     | -100%
 | NTANetAnalytics          | 0     | -100%
+
+To view the queries used to obtain these metrics, see the "Capturing Analytics" file.
 
 ## Conclusion
 
