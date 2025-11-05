@@ -59,13 +59,15 @@ Stop Time: 2025-10-10 13:20:20
 | ↳ Linux SSH Failed Auth   | 4945
 | NTANetAnalytics           | 1481
 
-To view the queries used to obtain these metrics, see the "Capturing Analytics" file.
+See the "Capturing Analytics" file to view the queries used to obtain these metrics.
 
 ## Incident Response Before Hardening / Security Controls
 
 <img width="1144" height="357" alt="image" src="https://github.com/user-attachments/assets/f3e4cdb5-baba-4875-9634-589ee67cc1e0" />
 
 I recorded my actions for the above generated incidents in "Incident Response Notes". I also investigated incidents that occurred prior to the 10/9 metric start date to further enhance my technical proficiency. To better replicate real-world incident response, I simulated certain actions, such as contacting a mock manager to verify employee activity, and also assumed the role of an internal user flagged as a potential threat actor.
+
+See the "Sentinel Alert Queries" file to view the queries used to configure my custom alerts/incidents.  
 
 ## Attack Maps After Hardening / Security Controls
 
